@@ -1,7 +1,9 @@
 <template lang="html">
   <div>
-    {{msg}}
-    <task></task>
+    <li>aaa
+      {{list.id}} - {{list.summary}}
+    </li>
+    <task v-for="task in list.tasks" :key="task" :task="task"></task>
   </div>
 </template>
 
@@ -12,9 +14,11 @@ export default {
     Task
   },
   name: 'list',
+  props: ['list'],
   data () {
     return {
-      msg: 'list1'
+      msg: 'list',
+      num: '0'
     }
   }
 }

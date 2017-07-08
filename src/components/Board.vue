@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-    {{msg}}
-    <list></list>
+    {{name}}
+    <list v-for="list in lists" :key="list" :list="list"></list>
   </div>
 </template>
 
@@ -14,7 +14,37 @@ export default {
   },
   data () {
     return {
-      msg: 'board1'
+      name: 'board1',
+      lists: [
+        {
+          id: '1',
+          title: 'bbb',
+          tasks: [
+            {
+              tid: '1',
+              tsummary: 'とーどー'
+            },
+            {
+              tid: '2',
+              tsummary: 'あああ'
+            }
+          ]
+        },
+        {
+          id: '2',
+          title: 'ccc',
+          tasks: [
+            {
+              tid: '3',
+              tsummary: 'けらけら'
+            },
+            {
+              tid: '4',
+              tsummary: 'てらｒてあｒ'
+            }
+          ]
+        }
+      ]
     }
   }
 }
