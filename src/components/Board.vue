@@ -1,7 +1,8 @@
 <template lang="html">
   <div>
-    {{name}}
-    <list v-for="list in lists" :key="list" :list="list"></list>
+    <h2>{{name}}</h2>
+    <list v-for="list in lists" :key="list.id" :list="list"></list>
+    <input v-model="listInput" placeholder="add list" @keyup.enter="addList">
   </div>
 </template>
 
@@ -12,9 +13,20 @@ export default {
   components: {
     List
   },
-  data () {
+  methods: {
+    addList () {
+      this.lists.push({
+        id: '3',
+        title: this.listInput,
+        tasks: []
+      })
+      this.listInput = ''
+    }
+  },
+  data: function () {
     return {
       name: 'board1',
+      listInput: '',
       lists: [
         {
           id: '1',
