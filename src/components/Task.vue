@@ -1,11 +1,16 @@
 <template lang="html">
-  <div>{{task.tid}} - {{task.tsummary}}</div>
+  <div>
+    {{task.tid}} - {{task.tsummary}}
+    <button @click="$emit('remove')"/>
+</div>
 </template>
 
 <script>
 export default {
   name: 'task',
-  props: ['task'],
+  props: {
+    'task': Object
+  },
   data () {
     return {
       num: '0'

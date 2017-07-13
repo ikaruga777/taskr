@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
-      <h3>{{list.id}} - {{list.title}}</h3>
-    <task v-for="task in list.tasks" :key="task.id" :task.sync="task"></task>
+      <h3>{{list.title}}</h3>
+    <task v-for="task in list.tasks" :key="task.tid" :task.sync="task" @remove="removeTask(task)" ></task>
     <input v-model="taskInput" @keyup.enter="addTask(this.taskInput)" placeholder="add task" >
   </div>
 </template>
@@ -13,7 +13,9 @@ export default {
     Task
   },
   name: 'list',
-  props: ['list'],
+  props: {
+    'list': Object
+  },
   data () {
     return {
       msg: 'list',
@@ -24,11 +26,15 @@ export default {
   methods: {
     addTask: function (summary) {
       this.list.tasks.push({
-        tid: 999,
+        tid: Date.now(),
         tsummary: this.taskInput
       })
-      this.$emit('update:task', this.list.tasks)
       this.taskInput = ''
+    },
+    removeTask: function (target) {
+      this.list.tasks = this.list.tasks.filter(function (t, index, array) {
+        return t.tid !== target.tid
+      })
     }
   }
 }

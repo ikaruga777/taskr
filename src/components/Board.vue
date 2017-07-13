@@ -16,7 +16,7 @@ export default {
   methods: {
     addList () {
       this.lists.push({
-        id: '3',
+        id: Date.now(),
         title: this.listInput,
         tasks: []
       })
@@ -27,36 +27,7 @@ export default {
     return {
       name: 'board1',
       listInput: '',
-      lists: [
-        {
-          id: '1',
-          title: 'bbb',
-          tasks: [
-            {
-              tid: '1',
-              tsummary: 'とーどー'
-            },
-            {
-              tid: '2',
-              tsummary: 'あああ'
-            }
-          ]
-        },
-        {
-          id: '2',
-          title: 'ccc',
-          tasks: [
-            {
-              tid: '3',
-              tsummary: 'けらけら'
-            },
-            {
-              tid: '4',
-              tsummary: 'てらｒてあｒ'
-            }
-          ]
-        }
-      ]
+      lists: []
     }
   }
 }
