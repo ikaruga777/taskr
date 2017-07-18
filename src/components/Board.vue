@@ -1,8 +1,8 @@
 <template lang="html">
-  <div>
+  <div class="container">
     <h2>{{name}}</h2>
     <list v-for="list in lists" :key="list.id" :list="list"></list>
-    <input v-model="listInput" placeholder="add list" @keyup.enter="addList">
+    <input class="input" v-model="listInput" placeholder="add list" @keyup.enter="addList">
   </div>
 </template>
 

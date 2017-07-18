@@ -1,7 +1,10 @@
 <template lang="html">
-  <div>
-    {{task.tid}} - {{task.tsummary}}
+  <div class="card">
+    <div class="card-header">
+      {{task.tid}} - {{task.tsummary}}
+    </div>
     <button @click="$emit('remove')"/>
+  </div>
 </div>
 </template>
 
