@@ -1,8 +1,8 @@
 <template lang="html">
-  <div>
+  <div class="column">
       <h3>{{list.title}}</h3>
     <task v-for="task in list.tasks" :key="task.tid" :task.sync="task" @remove="removeTask(task)" ></task>
-    <input v-model="taskInput" @keyup.enter="addTask(this.taskInput)" placeholder="add task" >
+    <input class="input" v-model="taskInput" @keyup.enter="addTask(this.taskInput)" placeholder="add task" >
   </div>
 </template>
 
