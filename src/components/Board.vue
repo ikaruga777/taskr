@@ -2,9 +2,9 @@
   <div class="container">
     <h2>{{name}}</h2>
     <div class="columns">
-      <list v-for="list in lists" :key="list.id" :list="list"></list>
+      <list v-for="list in lists" :key="list.id" :list="list" :list.sync="list" @remove="removeList(list)"></list>
     </div>
-    <input class="input" v-model="listInput" placeholder="add list" @keyup.enter="addList">
+    <input class="input" v-model="listInput" placeholder="add list" @keyup.enter="addList(listInput)">
   </div>
 </template>
 
@@ -16,13 +16,21 @@ export default {
     List
   },
   methods: {
-    addList () {
+    addList (listName) {
+      if (!listName) {
+        return
+      }
       this.lists.push({
         id: Date.now(),
-        title: this.listInput,
+        title: listName,
         tasks: []
       })
       this.listInput = ''
+    },
+    removeList: function (target) {
+      this.lists = this.lists.filter(function (l, index, array) {
+        return l.id !== target.id
+      })
     }
   },
   data: function () {
