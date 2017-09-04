@@ -27,13 +27,15 @@ export default {
   methods: {
     addTask: function (summary) {
       if (!summary) {
-        return
+        return false
       }
+      const date = Date.now()
       this.list.tasks.push({
-        tid: Date.now(),
+        tid: date,
         tsummary: this.taskInput
       })
       this.taskInput = ''
+      return true
     },
     removeTask: function (target) {
       this.list.tasks = this.list.tasks.filter(function (t, index, array) {

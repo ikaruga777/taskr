@@ -17,4 +17,19 @@ describe('List.vueの振る舞いだちょ', () => {
     expect(wrapper.find('h3')[0].text()).to.be.eql('listtest1')
     expect(wrapper.vm.$props.list.id).to.be.eql(date)
   })
+  it('', () => {
+    const date = Date.now()
+    const wrapper = mount(List, {
+      propsData: {
+        list: {
+          id: date,
+          title: 'listtest1',
+          tasks: []
+        }
+      }
+    })
+
+    expect(wrapper.find('h3')[0].text()).to.be.eql('listtest1')
+    expect(wrapper.vm.$props.list.id).to.be.eql(date)
+  })
 })
