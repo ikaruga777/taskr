@@ -21,7 +21,7 @@ export default {
         return
       }
       this.lists.push({
-        id: Date.now(),
+        listId: Date.now(),
         title: listName,
         tasks: []
       })

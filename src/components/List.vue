@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="column">
-      <h3>{{list.title}}</h3>
+      <div class="is-size-2">{{list.title}}</div>
       <button class="button is-small is-danger" @click="$emit('remove')">delete</button>
     <task v-for="task in list.tasks" :key="task.tid" :task.sync="task" @remove="removeTask(task)" ></task>
     <input class="input" v-model="taskInput" @keyup.enter="addTask(taskInput)" placeholder="add task" >
@@ -31,8 +31,10 @@ export default {
       }
       const date = Date.now()
       this.list.tasks.push({
+        listId: this.list.listId,
         tid: date,
-        tsummary: this.taskInput
+        tsummary: this.taskInput,
+        editing: false
       })
       this.taskInput = ''
       return true
